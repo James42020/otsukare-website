@@ -57,8 +57,8 @@ function setFavicon(mode){
         context.fillStyle = "#000";
         context.strokeStyle = "#000";
     }
-    context.font = "bold 29px Verdana";
-    context.fillText("オ",2,27);
+    context.font = "bold 28px Verdana";
+    context.fillText("オ",2,26);
     favicon.href = canvas.toDataURL('image/png');
 }
 
