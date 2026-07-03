@@ -28,19 +28,16 @@ h1{
 }
 .navbar{
     border-radius: 0 !important;
-    
 }
-/* a {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    -webkit-tap-highlight-color: transparent !important;
+a {
     cursor: pointer;
-} */
-
+}
 body{
     background-color: light-dark(#F8F8F8,#222) !important;
     color: light-dark(#000,#FFF) !important;
+}
+.nav-links{
+    color: rgb(157, 157, 157);
 }
 a:not(.nav-links):hover{
     color: light-dark(#23527C,#43A2F2) !important;
