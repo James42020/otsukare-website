@@ -1,6 +1,17 @@
 :root{
     color-scheme:unset;
 }
+@media (max-width: 768px) {
+    .navbar-fixed-top {
+        position: static;
+        top: auto;
+    }
+}
+@media (min-width: 768px) {
+    .container.content{
+        margin-top: 85px;
+    }
+}
 html{
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -19,13 +30,13 @@ h1{
     border-radius: 0 !important;
     
 }
-a {
+/* a {
     outline: none !important;
     box-shadow: none !important;
     border: none !important;
     -webkit-tap-highlight-color: transparent !important;
     cursor: pointer;
-}
+} */
 
 body{
     background-color: light-dark(#F8F8F8,#222) !important;
@@ -103,28 +114,10 @@ li{
     cursor: pointer;
 }
 
-.alert{
-    border:none;
-}
-
-.alert-danger{
-    background-color: light-dark(#f2dede,#bd3734);
-    color: light-dark(#bd3734,#f2dede)
-}
-
-.alert-warning{
-    background-color: light-dark(#fcf8e3,#c08c31);
-    color: light-dark(#c08c31,#fcf8e3)
-}
-
 #qrcode>*{
     position: relative;
     left: 50%;
     translate: -50%;
     padding: 40px;
     padding-top: 25px;
-}
-
-#favourite::after{
-    content: "";
 }

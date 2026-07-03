@@ -19,8 +19,9 @@ var content = fs.readdirSync("./private/html/content")
 var searchItems = []
 content.forEach(function(item){
     var lines = fs.readFileSync(`./private/html/content/${item}`)
-    .toString().replace(/<[^>]*>/g,"").split("\n")
+    .toString().replace(/<[^>]*>/g,"").replaceAll("\r","").split("\n")
     var title = lines[0]
+    console.log(encodeURIComponent(title.toLowerCase()))
     var description = lines[1]
     searchItems.push({title:title, description:description})
 })
@@ -57,26 +58,17 @@ app.get("/search/:page", (req, res) => {
     
 })
 
-// main pages
-var navbar = ["home","favourites"]
-navbar.forEach(function(item){
-    app.get("/"+item.replace("home",""), (req, res) => {
-        const data = {
-            isJStrue: fs.existsSync(`./public/js/${item}.js`),
-            isCSStrue: fs.existsSync(`./public/css/${item}.css`),
-            file: item,
-            search: searchItems,
-            content: fs.readFileSync(`./private/html/${item}.html`, 'utf8'),
-            favouritable: false
-        }
-        res.render('index', data)
-    })
+app.get("/", (req, res) => {
+    const data = {
+        isJStrue: fs.existsSync(`./public/js/home.js`),
+        isCSStrue: fs.existsSync(`./public/css/home.css`),
+        file: "home",
+        search: searchItems,
+        content: fs.readFileSync(`./private/html/home.html`, 'utf8'),
+        favouritable: false
+    }
+    res.render('index', data)
 })
-
-app.post('/log', (req, res) => {
-    console.log('Data from frontend:', req.body);
-    res.sendStatus(200);
-});
 
 app.all('*splat', (req, res) => {
     const data = {

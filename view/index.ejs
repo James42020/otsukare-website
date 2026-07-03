@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if(localStorage.getItem("DarkMode") == 1){
+            document.documentElement.style.colorScheme = "dark";
+        } else {
+            document.documentElement.style.colorScheme = "light";
+        }
+    </script>
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/jquery.min.js"></script>
@@ -18,8 +25,8 @@
     <% } %>
 </head>
 <body>
-
-    <nav class="navbar navbar-default navbar-fixed-top">
+    
+    <nav class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-target">
@@ -99,7 +106,7 @@
         </div>
     </div>
 
-    <div class="container content" style="margin-top: 85px;">
+    <div class="container content">
         <% if (favouritable) { %>
             <a id="favourite"></a>
         <% } %>
