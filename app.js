@@ -19,7 +19,7 @@ var content = fs.readdirSync("./private/html/content")
 var searchItems = []
 content.forEach(function(item){
     var lines = fs.readFileSync(`./private/html/content/${item}`)
-    .toString().replace(/<[^>]*>/g,"").split("\r\n")
+    .toString().replace(/<[^>]*>/g,"").split("\n")
     console.log(lines)
     var title = lines[0]
     var description = lines[1]
