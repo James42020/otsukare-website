@@ -28,8 +28,13 @@ h1{
 }
 .navbar{
     border-radius: 0 !important;
+    
 }
 a {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
     cursor: pointer;
 }
 body{
@@ -50,7 +55,6 @@ li{
     letter-spacing: 0.5px;
     font-weight: 600;
 }
-
 .modal-content{
     background-color: light-dark(#F8F8F8,#222) !important;
     color: light-dark(#000,#FFF) !important;

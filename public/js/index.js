@@ -36,14 +36,14 @@ $(document).ready(function(){
 function setFavicon(mode){
     var favicon = document.getElementById('favicon')
     var canvas = document.createElement('canvas');
-    var height = 16;
-    var width = 16;
+    var height = 32;
+    var width = 32;
     canvas.height = height;
     canvas.width = width;
     var context = canvas.getContext("2d");
     if(mode){
-        context.fillStyle = "#222";
-        context.strokeStyle = "#222";
+        context.fillStyle = "#000";
+        context.strokeStyle = "#000";
     } else {
         context.fillStyle = "#FFF";
         context.strokeStyle = "#FFF";
@@ -57,8 +57,8 @@ function setFavicon(mode){
         context.fillStyle = "#000";
         context.strokeStyle = "#000";
     }
-    context.font = "bold 14px Arial";
-    context.fillText("オ",1,13);
+    context.font = "bold 29px Verdana";
+    context.fillText("オ",2,27);
     favicon.href = canvas.toDataURL('image/png');
 }
 
