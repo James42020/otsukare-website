@@ -1,0 +1,19 @@
+{
+    "name": "otsukare",
+    "version": "1.0.0",
+    "description": "My Japanese Learning website",
+    "license": "ISC",
+    "author": "",
+    "type": "commonjs",
+    "main": "app.js",
+    "scripts": {
+        "build": "npm install",
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "bootstrap": "^3.4.1",
+        "ejs": "^6.0.1",
+        "express": "^5.2.1",
+        "jquery": "^3.7.1"
+    }
+}

@@ -1,0 +1,133 @@
+:root{
+    color-scheme:unset;
+}
+html{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+h1{
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+}
+.content{
+    margin-bottom: 25vh !important;
+}
+.navbar{
+    border-radius: 0 !important;
+    
+}
+a {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    cursor: pointer;
+}
+
+body{
+    background-color: light-dark(#F8F8F8,#222) !important;
+    color: light-dark(#000,#FFF) !important;
+}
+.nav-links{
+    padding: 18px 15px !important;
+}
+a:not(.nav-links):hover{
+    color: light-dark(#23527C,#43A2F2) !important;
+}
+li{
+    margin-bottom: 2px;
+}
+.navbar-nav li{
+    user-select: none;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.modal-content{
+    background-color: light-dark(#F8F8F8,#222) !important;
+    color: light-dark(#000,#FFF) !important;
+}
+
+.modal-content .close{
+    color: light-dark(#CCC,#555) !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+.modal-content .close:hover{
+    color: light-dark(#000,#FFF) !important;
+}
+
+.modal-content input, .modal-content .btn{
+    background-color: light-dark(#F8F8F8,#222) !important;
+    color: light-dark(#000,#FFF) !important;
+    border: 1px solid light-dark(#CCC,#555) !important;
+}
+.modal-content .btn:hover{
+    background-color: light-dark(#E7E7E7,#333) !important;
+}
+
+.modal-content input::placeholder{
+    color: light-dark(#C5C5C5,#555) !important;
+}
+
+.modal-header, .modal-footer{
+    border-color: light-dark(#C5C5C5,#555) !important;
+}
+.search > .modal-body{
+    padding: 0px 15px !important;
+}
+.search-link, .fav-link{
+    margin: 15px 0px;
+    padding: 10px 15px;
+    border: 1px solid light-dark(#C5C5C5,#555) !important;
+    user-select: none;
+}
+.search-link>*, .fav-link>*{
+    pointer-events: none;
+}
+.search-link h3, .fav-link h3{
+    margin-top: 10px;
+}
+.search-link p, .fav-link p{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 100%; 
+    height: 1.5em; 
+    white-space: nowrap;
+    color: light-dark(#C5C5C5,#555);
+    font-style: italic;
+}
+
+.search-link:hover, .fav-link:hover{
+    background-color: light-dark(#E7E7E7,#333);
+    cursor: pointer;
+}
+
+.alert{
+    border:none;
+}
+
+.alert-danger{
+    background-color: light-dark(#f2dede,#bd3734);
+    color: light-dark(#bd3734,#f2dede)
+}
+
+.alert-warning{
+    background-color: light-dark(#fcf8e3,#c08c31);
+    color: light-dark(#c08c31,#fcf8e3)
+}
+
+#qrcode>*{
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    padding: 40px;
+    padding-top: 25px;
+}
+
+#favourite::after{
+    content: "";
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オツカレ - <%= file.toUpperCase() %></title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js"></script>
+    <% if (isJStrue) { %>
+        <script src="/js/<%= file %>.js"></script>
+    <% } %>
+    <% if (isCSStrue) { %>
+        <link rel="stylesheet" href="/css/<%= file %>.css">
+    <% } %>
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-target">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-target">
+                <ul class="nav navbar-nav">
+                    <li><a class="nav-links" href="/"><span class="glyphicon glyphicon-home"></span><span class="visible-xs-inline">　</span> HOME</a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span><span class="visible-xs-inline">　</span> SEARCH</a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#favourites"><span class="glyphicon glyphicon-star"></span><span class="visible-xs-inline">　</span> FAVOURITES</a></li>
+                    <li><a class="nav-links" onclick="setRandomPage()"><span class="glyphicon glyphicon-random"></span><span class="visible-xs-inline">　</span> RANDOM</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-links" data-toggle="modal" data-target="#mobile"><span class="glyphicon glyphicon-qrcode"></span><span class="visible-xs-inline">　</span> QR CODE</a></li>
+                    <li><a class="nav-links" onclick="flip()"><span class="glyphicon glyphicon-adjust"></span><span class="visible-xs-inline">　</span> <span id="modeName"><!-- Text Here --></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Modal -->
+    <div id="search" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header visible-xs">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 style="margin-block-start: 10px;">Search</h3>
+                </div>
+                <div class="modal-header">
+                    <input id="search-input" type="text" class="form-control" placeholder="Search...">
+                </div>
+                <div class="modal-body" id="search-terms">
+                    <% for(i=0;i<search.length;i++){ %>
+                    <div class="search-link" tabindex="0" data-search="<%= search[i].title %>">
+                        <h3><%= search[i].title %></h3>
+                        <p><%= search[i].description %></p>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favourites -->
+    <div id="favourites" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 style="margin-block-start: 10px;">Favourites</h3>
+                </div>
+                <div class="modal-body" id="favourite-links">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Modal -->
+    <div id="mobile" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 style="margin-block-start: 10px;">QR Code</h3>
+                </div>
+                <div class="modal-body">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+                    <p style="text-align: center;">Want to view this page on another device... Use this QR Code</p>
+                    <div id="qrcode"></div>
+                    <small style="color: #808080;">Note: Favourites will not be transfered across devices</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content" style="margin-top: 85px;">
+        <% if (favouritable) { %>
+            <a id="favourite"></a>
+        <% } %>
+
+        <%- content %>
+    </div>
+
+
+</body>
+</html>
