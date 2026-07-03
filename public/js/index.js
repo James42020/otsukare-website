@@ -33,9 +33,37 @@ $(document).ready(function(){
     });
 });
 
+function setFavicon(mode){
+    var favicon = document.getElementById('favicon')
+    var canvas = document.createElement('canvas');
+    var height = 16;
+    var width = 16;
+    canvas.height = height;
+    canvas.width = width;
+    var context = canvas.getContext("2d");
+    if(mode){
+        context.fillStyle = "#222";
+        context.strokeStyle = "#222";
+    } else {
+        context.fillStyle = "#FFF";
+        context.strokeStyle = "#FFF";
+    }
+    context.roundRect(0,0,width,height,2);
+    context.fill()
+    if(mode){
+        context.fillStyle = "#FFF";
+        context.strokeStyle = "#FFF";
+    } else {
+        context.fillStyle = "#000";
+        context.strokeStyle = "#000";
+    }
+    context.font = "bold 14px Arial";
+    context.fillText("オ",1,13);
+    favicon.href = canvas.toDataURL('image/png');
+}
 
-function navbarMode(value){
-    if(value){
+function navbarMode(mode){
+    if(mode){
         $(".navbar").removeClass("navbar-default")
         $(".navbar").addClass("navbar-inverse")
     } else {
@@ -67,12 +95,14 @@ function QRStatus(mode){
 function flip(){
     if(localStorage.getItem("DarkMode") == "0"){
         $(':root').css('color-scheme', 'dark')
+        setFavicon(true)
         navbarMode(true)
         QRStatus(true)
         $("#modeName").text(" LIGHT MODE")
         localStorage.setItem("DarkMode","1")
     } else {
         $(':root').css('color-scheme', 'light')
+        setFavicon(false)
         navbarMode(false)
         QRStatus(false)
         $("#modeName").text(" DARK MODE")
@@ -85,6 +115,7 @@ function flip(){
 $(document).on("DOMContentLoaded",function(){
     if(localStorage.getItem("DarkMode") == undefined){
         $(':root').css('color-scheme', 'light')
+        setFavicon(false)
         navbarMode(false)
         QRStatus(false)
         $("#modeName").text(" DARK MODE")
@@ -94,6 +125,7 @@ $(document).on("DOMContentLoaded",function(){
     } else{
         if(localStorage.getItem("DarkMode") == "0"){
             $(':root').css('color-scheme', 'light')
+            setFavicon(false)
             navbarMode(false)
             QRStatus(false)
             qrDark = "#000000"
@@ -101,6 +133,7 @@ $(document).on("DOMContentLoaded",function(){
             $("#modeName").text(" DARK MODE")
         } else {
             $(':root').css('color-scheme', 'dark')
+            setFavicon(true)
             navbarMode(true)
             QRStatus(true)
             qrDark = "#FFFFFF"

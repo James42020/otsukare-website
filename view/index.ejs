@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script>
         if(localStorage.getItem("DarkMode") == 1){
             document.documentElement.style.colorScheme = "dark";
@@ -8,13 +11,12 @@
             document.documentElement.style.colorScheme = "light";
         }
     </script>
+    <link id="favicon" rel="icon" type="image/png">
+    <title>オツカレ - <%= file.toUpperCase() %></title>
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>オツカレ - <%= file.toUpperCase() %></title>
     <link rel="stylesheet" href="/css/index.css">
     <script src="/js/index.js"></script>
     <% if (isJStrue) { %>
