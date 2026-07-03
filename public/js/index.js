@@ -161,7 +161,8 @@ function setRandomPage(){
 // Debug Favourites
 //localStorage.setItem("Favourites", "")
 
-var favourites = localStorage.getItem("Favourites").split(",")
+try{var favourites = localStorage.getItem("Favourites").split(",")}
+catch{var favourites = []}
 
 function updateFavs(){
     var textData = favourites.toString()
