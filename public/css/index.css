@@ -31,9 +31,6 @@ body{
     background-color: light-dark(#F8F8F8,#222) !important;
     color: light-dark(#000,#FFF) !important;
 }
-.nav-links{
-    padding: 18px 15px !important;
-}
 a:not(.nav-links):hover{
     color: light-dark(#23527C,#43A2F2) !important;
 }

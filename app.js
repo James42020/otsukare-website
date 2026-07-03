@@ -20,7 +20,6 @@ var searchItems = []
 content.forEach(function(item){
     var lines = fs.readFileSync(`./private/html/content/${item}`)
     .toString().replace(/<[^>]*>/g,"").split("\n")
-    console.log(lines)
     var title = lines[0]
     var description = lines[1]
     searchItems.push({title:title, description:description})

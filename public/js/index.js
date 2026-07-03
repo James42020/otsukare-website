@@ -170,7 +170,6 @@ function updateFavs(){
         textData = textData.substring(1,textData.length)
     }
     localStorage.setItem("Favourites", textData)
-
 }
 
 function updateFavModal(){
@@ -201,7 +200,8 @@ function updateFavModal(){
 $(document).on("DOMContentLoaded",function(){
     console.log("trigger")
     var titleURL = $("h1")[0].innerText
-    var favouritesList = localStorage.getItem("Favourites").split(",")
+    try{var favouritesList = localStorage.getItem("Favourites").split(",")}
+    catch{var favouritesList = []}
     if($("#favourite")[0] != undefined){
         $("#favourite").attr("data-title",titleURL)
         if(favouritesList.includes(titleURL)){
