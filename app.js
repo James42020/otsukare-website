@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const orderFiles = require('./content-order');
 
 const app = express();
 const port = 4000;
+
+orderFiles()
 
 // ejs
 app.set('view engine', 'ejs');
@@ -21,7 +24,6 @@ content.forEach(function(item){
     var lines = fs.readFileSync(`./private/html/content/${item}`)
     .toString().replace(/<[^>]*>/g,"").replaceAll("\r","").split("\n")
     var title = lines[0]
-    console.log(encodeURIComponent(title.toLowerCase()))
     var description = lines[1]
     searchItems.push({title:title, description:description})
 })
@@ -30,7 +32,7 @@ app.get("/search/:page", (req, res) => {
     var input = req.params.page
     var found = false
     for(i=0;i<content.length;i++){
-        var current = path.basename(content[i],".html").replace(/[0-9A-Z]/g,"")
+        var current = path.basename(content[i],".html").replace(/[A-Z]/g,"")
         if(current == input){
             found = true
             const data = {

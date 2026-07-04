@@ -6,6 +6,9 @@
         position: static;
         top: auto;
     }
+    #qrcode{
+        zoom:85%;
+    }
 }
 @media (min-width: 768px) {
     .container.content{
