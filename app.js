@@ -18,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 app.use(express.static(path.join(__dirname, "node_modules/jquery/dist/")));
 
+setTimeout(function(){
+
 var content = fs.readdirSync("./private/html/content")
 var searchItems = []
 content.forEach(function(item){
@@ -52,7 +54,7 @@ app.get("/search/:page", (req, res) => {
             isCSStrue: false,
             file: "404",
             search: searchItems,
-            content: fs.readFileSync(`./private/html/404.html`, 'utf8'),
+            content: fs.readFileSync(`./private/html/404/404.html`, 'utf8'),
             favouritable: false
         }
         res.status(404).render('index', data);
@@ -60,16 +62,20 @@ app.get("/search/:page", (req, res) => {
     
 })
 
-app.get("/", (req, res) => {
-    const data = {
-        isJStrue: fs.existsSync(`./public/js/home.js`),
-        isCSStrue: fs.existsSync(`./public/css/home.css`),
-        file: "home",
-        search: searchItems,
-        content: fs.readFileSync(`./private/html/home.html`, 'utf8'),
-        favouritable: false
-    }
-    res.render('index', data)
+var main = fs.readdirSync("./private/html/main")
+main.forEach(function(item){
+    var mainbase = path.basename(item,".html")
+    app.get("/"+mainbase.replace("home",""), (req, res) => {
+        const data = {
+            isJStrue: fs.existsSync(`./public/js/${mainbase}.js`),
+            isCSStrue: fs.existsSync(`./public/css/${mainbase}.css`),
+            file: mainbase,
+            search: searchItems,
+            content: fs.readFileSync(`./private/html/main/${mainbase}.html`, 'utf8'),
+            favouritable: false
+        }
+        res.render('index', data)
+    })
 })
 
 app.all('*splat', (req, res) => {
@@ -78,13 +84,16 @@ app.all('*splat', (req, res) => {
         isCSStrue: false,
         file: "404",
         search: searchItems,
-        content: fs.readFileSync(`./private/html/404.html`, 'utf8'),
+        content: fs.readFileSync(`./private/html/404/404.html`, 'utf8'),
         favouritable: false
     }
-    res.status(404).render('index', data);
+    res.status(404).render('index', data)
 });
 
 // misc
+
 app.listen(port, (err) => {
     console.log(`Express server running at http://localhost:${port}`);
-});
+})
+
+},100) // waits for file rename

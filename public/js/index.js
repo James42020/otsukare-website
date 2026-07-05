@@ -99,6 +99,7 @@ function flip(){
         navbarMode(true)
         QRStatus(true)
         $("#modeName").text(" LIGHT MODE")
+        $("#modeTitle").attr("title","LIGHT MODE")
         localStorage.setItem("DarkMode","1")
     } else {
         $(':root').css('color-scheme', 'light')
@@ -106,6 +107,7 @@ function flip(){
         navbarMode(false)
         QRStatus(false)
         $("#modeName").text(" DARK MODE")
+        $("#modeTitle").attr("title","DARK MODE")
         qrDark = "#000000"
         qrLight = "#FFFFFF"
         localStorage.setItem("DarkMode","0")
@@ -119,6 +121,7 @@ $(document).on("DOMContentLoaded",function(){
         navbarMode(false)
         QRStatus(false)
         $("#modeName").text(" DARK MODE")
+        $("#modeTitle").attr("title","DARK MODE")
         qrDark = "#000000"
         qrLight = "#FFFFFF"
         localStorage.setItem("DarkMode","0")
@@ -131,6 +134,7 @@ $(document).on("DOMContentLoaded",function(){
             qrDark = "#000000"
             qrLight = "#FFFFFF"
             $("#modeName").text(" DARK MODE")
+            $("#modeTitle").attr("title","DARK MODE")
         } else {
             $(':root').css('color-scheme', 'dark')
             setFavicon(true)
@@ -139,6 +143,7 @@ $(document).on("DOMContentLoaded",function(){
             qrDark = "#FFFFFF"
             qrLight = "#222222"
             $("#modeName").text(" LIGHT MODE")
+            $("#modeTitle").attr("title","LIGHT MODE")
         }
     }
 })

@@ -30,6 +30,7 @@ td.title{
 }
 
 div.tooltip{
+    z-index: 1;
     font-size: 12pt;
     min-width: 40px;
 }

@@ -14,6 +14,15 @@
     .container.content{
         margin-top: 85px;
     }
+    .nav-icon{
+        zoom:140%;
+        width: 25px;
+        text-align: center;
+    }
+    .navbar-brand{
+        padding: 18px 15px;
+    }
+    
 }
 html{
     -ms-overflow-style: none;
@@ -21,6 +30,9 @@ html{
 }
 html::-webkit-scrollbar {
     display: none;
+}
+.nowrap{
+    white-space: nowrap;
 }
 h1{
     margin-block-start: 10px;
@@ -53,16 +65,24 @@ a:not(.nav-links):hover{
 li{
     margin-bottom: 2px;
 }
-.navbar-nav li{
+.navbar-nav li, .dropdown-menu>li>a{
     user-select: none;
     letter-spacing: 0.5px;
     font-weight: 600;
+}
+.navbar-brand{
+    font-size: 22pt;
+    font-weight: 600;
+    color: light-dark(#000,#FFF) !important;
+}
+.dropdown.open>a, .dropdown>a{
+    background-color: light-dark(#F8F8F8,#222) !important;
+    color: light-dark(#777777,#9d9d9d) !important;
 }
 .modal-content{
     background-color: light-dark(#F8F8F8,#222) !important;
     color: light-dark(#000,#FFF) !important;
 }
-
 .modal-content .close{
     color: light-dark(#CCC,#555) !important;
     opacity: 1 !important;

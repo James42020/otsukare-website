@@ -8,7 +8,8 @@ const ORDER = [
     "time",
     "people",
     "this & that",
-    "questions"
+    "questions",
+    "new"
 ]
 
 const fs = require('fs');

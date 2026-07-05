@@ -27,7 +27,7 @@
     <% } %>
 </head>
 <body>
-    
+
     <nav class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -36,17 +36,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand nav-links" href="/">オツカレ</a>
             </div>
             <div class="collapse navbar-collapse" id="nav-target">
                 <ul class="nav navbar-nav">
-                    <li><a class="nav-links" href="/"><span class="glyphicon glyphicon-home"></span><span class="visible-xs-inline">　</span> HOME</a></li>
-                    <li><a class="nav-links" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span><span class="visible-xs-inline">　</span> SEARCH</a></li>
-                    <li><a class="nav-links" data-toggle="modal" data-target="#favourites"><span class="glyphicon glyphicon-star"></span><span class="visible-xs-inline">　</span> FAVOURITES</a></li>
-                    <li><a class="nav-links" onclick="setRandomPage()"><span class="glyphicon glyphicon-random"></span><span class="visible-xs-inline">　</span> RANDOM</a></li>
+                    <li><a class="nav-links" href="/" title="HOME"><span class="nav-icon glyphicon glyphicon-home"></span></span><span class="visible-xs-inline">　 HOME</span></a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#search" title="SEARCH"><span class="nav-icon glyphicon glyphicon-search"></span><span class="visible-xs-inline">　 SEARCH</span></a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#favourites" title="FAVOURITES"><span class="nav-icon glyphicon glyphicon-star"></span><span class="visible-xs-inline">　 FAVOURITES</span></a></li>
+                    <li><a class="nav-links" onclick="setRandomPage()" title="RANDOM"><span class="nav-icon glyphicon glyphicon-random"></span><span class="visible-xs-inline">　 RANDOM</span></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="nav-links" data-toggle="modal" data-target="#mobile"><span class="glyphicon glyphicon-qrcode"></span><span class="visible-xs-inline">　</span> QR CODE</a></li>
-                    <li><a class="nav-links" onclick="flip()"><span class="glyphicon glyphicon-adjust"></span><span class="visible-xs-inline">　</span> <span id="modeName">--------- MODE<!-- Text will be replaced --></span></a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#mobile" title="QR CODE"><span class="nav-icon glyphicon glyphicon-qrcode"></span><span class="visible-xs-inline">　 QR CODE</span></a></li>
+                    <li><a class="nav-links" onclick="flip()" id="modeTitle" title="------ MODE"><span class="nav-icon glyphicon glyphicon-adjust"></span><span class="visible-xs-inline">　 <span id="modeName"><!-- Text will be replaced --></span></span></a></li>
+                    <li><a class="nav-links" href="/links" title="LINKS"><span class="nav-icon glyphicon glyphicon-link"></span><span class="visible-xs-inline">　 LINKS</span></a></li>                    
                 </ul>
             </div>
         </div>
