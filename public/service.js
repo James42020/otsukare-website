@@ -11,38 +11,38 @@ const CACHE_NAME = `otsukare-${VERSION}`;
 var APP_STATIC_RESOURCES = [
     "/",
 
-    "404.html",
+    "/html/404.html",
 
-    "AAAkana.html",
-    "AABkanji.html",
-    "AACparticles.html",
-    "AADconjugations.html",
-    "AAEnumbers & counters.html",
-    "AAFplaces.html",
-    "AAGtime.html",
-    "AAHpeople.html",
-    "AAIthis & that.html",
-    "AAJquestions.html",
+    "/html/AAAkana.html",
+    "/html/AABkanji.html",
+    "/html/AACparticles.html",
+    "/html/AADconjugations.html",
+    "/html/AAEnumbers & counters.html",
+    "/html/AAFplaces.html",
+    "/html/AAGtime.html",
+    "/html/AAHpeople.html",
+    "/html/AAIthis & that.html",
+    "/html/AAJquestions.html",
 
-    "home.html",
-    "links.html",
+    "/html/home.html",
+    "/html/links.html",
 
-    "index.js",
-    "kana.js",
+    "/js/index.js",
+    "/js/kana.js",
 
-    "index.css",
-    "kana.css",
+    "/css/index.css",
+    "/css/kana.css",
 
-    "dakuon.json",
-    "kana.json",
-    "special.json",
-    "yoon.json",
+    "/json/dakuon.json",
+    "/json/kana.json",
+    "/json/special.json",
+    "/json/yoon.json",
 
-    "icon-192.png",
-    "icon-512.png",
-    "icon.svg",
-    "manifest.json",
-    "service.js"
+    "/manifest/icon-192.png",
+    "/manifest/icon-512.png",
+    "/manifest/icon.svg",
+    "/manifest/manifest.json",
+    "/manifest/service.js"
 ];
 
 // On install, cache the static resources
