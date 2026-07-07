@@ -69,14 +69,12 @@ function setUpStatic(){
 }
 setUpStatic()
 
-setTimeout(function(){
 // The version of the cache.
 // change whenever APP_STATIC_RESOURCES is changed
 const VERSION = "1";
 
 // The name of the cache
 const CACHE_NAME = `otsukare-${VERSION}`;
-
 
 // On install, cache the static resources
 self.addEventListener("install", (event) => {
@@ -129,4 +127,3 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-},100)
