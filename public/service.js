@@ -69,6 +69,7 @@ function setUpStatic(){
 }
 setUpStatic()
 
+setTimeout(function(){
 // The version of the cache.
 // change whenever APP_STATIC_RESOURCES is changed
 const VERSION = "1";
@@ -110,7 +111,6 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   // As a single page app, direct app to always go to cached home page.
   if (event.request.mode === "navigate") {
-    event.respondWith(caches.match("./"));
     return;
   }
 
@@ -128,3 +128,5 @@ self.addEventListener("fetch", (event) => {
     })(),
   );
 });
+
+},100)
