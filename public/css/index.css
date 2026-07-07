@@ -1,5 +1,6 @@
 :root{
     color-scheme:unset;
+    --offline-margin: 85px;
 }
 @media (max-width: 768px) {
     .navbar-fixed-top {
@@ -12,15 +13,21 @@
 }
 @media (min-width: 768px) {
     .container.content{
-        margin-top: 85px;
+        margin-top: var(--offline-margin);
     }
     .nav-icon{
         zoom:140%;
         width: 25px;
         text-align: center;
     }
-    .navbar-brand{
-        padding: 18px 15px;
+    .nav-links:not(.navbar-brand){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    hr{
+        display: none;
+        opacity: 0;
     }
     
 }
@@ -33,6 +40,10 @@ html::-webkit-scrollbar {
 }
 .nowrap{
     white-space: nowrap;
+    overflow-wrap: normal;
+}
+.navbar-container{
+    z-index: 1000;
 }
 h1{
     margin-block-start: 10px;
@@ -56,6 +67,15 @@ body{
     background-color: light-dark(#F8F8F8,#222) !important;
     color: light-dark(#000,#FFF) !important;
 }
+.navbar-collapse{
+    width: 100%;
+    max-height: 1000px !important;
+}
+hr{
+    margin: 8px 0px;
+    border-color: light-dark(#E7E7E7,#393939) !important;
+    border-style:groove;
+}
 .nav-links{
     color: rgb(157, 157, 157);
 }
@@ -74,6 +94,7 @@ li{
     font-size: 22pt;
     font-weight: 600;
     color: light-dark(#000,#FFF) !important;
+    user-select: none;
 }
 .dropdown.open>a, .dropdown>a{
     background-color: light-dark(#F8F8F8,#222) !important;
@@ -144,4 +165,34 @@ li{
     translate: -50%;
     padding: 40px;
     padding-top: 25px;
+}
+
+.offline-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.offline {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 40s linear infinite;
+  font-weight: 600;
+  user-select: none;
+}
+
+.offline p {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 0px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }

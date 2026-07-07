@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="manifest" href="/manifest/manifest.json"/>
+    <link rel="icon" type="image/svg+xml" href="/manifest/icon.svg">
+    <link rel="icon" type="image/png" href="/manifest/icon-512.png">
+    <link rel="icon" type="image/png" href="/manifest/icon-192.png">
     <script>
         if(localStorage.getItem("DarkMode") == 1){
             document.documentElement.style.colorScheme = "dark";
@@ -28,8 +31,19 @@
 </head>
 <body>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service.js')
+            .then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    </script>
+
     <nav class="navbar navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid navbar-container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-target">
                     <span class="icon-bar"></span>
@@ -40,19 +54,36 @@
             </div>
             <div class="collapse navbar-collapse" id="nav-target">
                 <ul class="nav navbar-nav">
-                    <li><a class="nav-links" href="/" title="HOME"><span class="nav-icon glyphicon glyphicon-home"></span></span><span class="visible-xs-inline">　 HOME</span></a></li>
-                    <li><a class="nav-links" data-toggle="modal" data-target="#search" title="SEARCH"><span class="nav-icon glyphicon glyphicon-search"></span><span class="visible-xs-inline">　 SEARCH</span></a></li>
-                    <li><a class="nav-links" data-toggle="modal" data-target="#favourites" title="FAVOURITES"><span class="nav-icon glyphicon glyphicon-star"></span><span class="visible-xs-inline">　 FAVOURITES</span></a></li>
-                    <li><a class="nav-links" onclick="setRandomPage()" title="RANDOM"><span class="nav-icon glyphicon glyphicon-random"></span><span class="visible-xs-inline">　 RANDOM</span></a></li>
+                    <li><a class="nav-links" href="/" title="Home"><span class="nav-icon glyphicon glyphicon-home"></span></span><span class="visible-xs-inline">　 HOME</span></a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#search" title="Search"><span class="nav-icon glyphicon glyphicon-search"></span><span class="visible-xs-inline">　 SEARCH</span></a></li>
+                    <li><a class="nav-links" data-toggle="modal" data-target="#favourites" title="Favourites"><span class="nav-icon glyphicon glyphicon-star"></span><span class="visible-xs-inline">　 FAVOURITES</span></a></li>
+                    <li><a class="nav-links" onclick="setRandomPage()" title="Random"><span class="nav-icon glyphicon glyphicon-random"></span><span class="visible-xs-inline">　 RANDOM</span></a></li>
+                    <li><a class="nav-links" href="/links" title="Links"><span class="nav-icon glyphicon glyphicon-link"></span><span class="visible-xs-inline">　 LINKS</span></a></li>                    
                 </ul>
+                <hr>
+                <ul class="nav navbar-nav navbar-right">          
+                    <li><a class="nav-links" data-toggle="modal" data-target="#mobile" title="QR Code"><span class="nav-icon glyphicon glyphicon-qrcode"></span><span class="visible-xs-inline">　 QR CODE</span></a></li>
+                    <li><a class="nav-links" onclick="flip()" id="modeTitle"><span class="nav-icon glyphicon glyphicon-adjust"></span><span class="visible-xs-inline">　 <span id="modeName"><!-- Text will be replaced --></span></span></a></li>
+                </ul>
+                <hr id="install-line">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="nav-links" data-toggle="modal" data-target="#mobile" title="QR CODE"><span class="nav-icon glyphicon glyphicon-qrcode"></span><span class="visible-xs-inline">　 QR CODE</span></a></li>
-                    <li><a class="nav-links" onclick="flip()" id="modeTitle" title="------ MODE"><span class="nav-icon glyphicon glyphicon-adjust"></span><span class="visible-xs-inline">　 <span id="modeName"><!-- Text will be replaced --></span></span></a></li>
-                    <li><a class="nav-links" href="/links" title="LINKS"><span class="nav-icon glyphicon glyphicon-link"></span><span class="visible-xs-inline">　 LINKS</span></a></li>                    
+                    <li><a class="nav-links hidden" onclick="installApp()" id="install" title="Install"><span class="nav-icon glyphicon glyphicon-download-alt"></span><span class="visible-xs-inline">　 INSTALL</span></a></li>
                 </ul>
+                
             </div>
         </div>
+        <div class="offline-wrapper hidden">
+        <div class="offline">
+            <p>
+                　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE
+            </p>
+                　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE　OFFLINE MODE
+            <p>
+            </p>
+        </div>
+    </div>
     </nav>
+    
 
     <!-- Search Modal -->
     <div id="search" class="modal fade" role="dialog">

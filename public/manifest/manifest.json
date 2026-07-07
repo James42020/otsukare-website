@@ -1,0 +1,28 @@
+{
+    "name": "オツカレ",
+    "description": "A one-stop place to learn Japanese",
+    "start_url": "/",
+    "theme_color": "#222222",
+    "background_color": "#222222",
+    "icons": [
+    {
+        "src": "icon.svg",
+        "sizes": "any",
+        "type": "image/svg+xml",
+        "purpose": "any"
+    },
+    {
+        "src": "icon-512.png",
+        "sizes": "51x512",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+    }
+    ],
+    "display": "standalone"
+}

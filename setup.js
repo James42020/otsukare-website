@@ -8,8 +8,7 @@ const ORDER = [
     "time",
     "people",
     "this & that",
-    "questions",
-    "new"
+    "questions"
 ]
 
 const fs = require('fs');
@@ -25,8 +24,8 @@ function generateCode(number){
     return result
 }
 
-module.exports = function(){
-    var dir = "./private/html/content"
+module.exports.orderFiles = function(){
+    var dir = "./public/html/content"
     var filesDir = fs.readdirSync(dir)
     for(i=0;i<ORDER.length;i++){
         var code = generateCode(i)
@@ -40,5 +39,6 @@ module.exports = function(){
                 )
             }
         }
+        // console.log(`${code}${ORDER[i]}.html`)
     }
 }
