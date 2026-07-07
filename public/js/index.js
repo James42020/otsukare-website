@@ -8,8 +8,6 @@ setInterval(function(){
         $(".offline-wrapper").addClass("hidden")
         $(':root').css('--offline-margin',"80px")
     }
-
-    console.log($(':root').css('--offline-margin'))
 },1)
 
 
