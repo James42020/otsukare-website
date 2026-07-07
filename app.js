@@ -1,12 +1,9 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const setup = require('./setup');
 
 const app = express();
 const port = 4000;
-
-setup.orderFiles()
 
 // ejs
 app.set('view engine', 'ejs');

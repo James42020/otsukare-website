@@ -24,21 +24,19 @@ function generateCode(number){
     return result
 }
 
-module.exports.orderFiles = function(){
-    var dir = "./public/html/content"
-    var filesDir = fs.readdirSync(dir)
-    for(i=0;i<ORDER.length;i++){
-        var code = generateCode(i)
-        for(j=0;j<filesDir.length;j++){
-            var search = path.basename(filesDir[j],".html").replace(/[A-Z]/g,"")
-            if(ORDER[i] == search){
-                fs.rename(
-                    `${dir}/${filesDir[j]}`,
-                    `${dir}/${code}${search}.html`,
-                    (err) => {}
-                )
-            }
+var dir = "./public/html/content"
+var filesDir = fs.readdirSync(dir)
+for(i=0;i<ORDER.length;i++){
+    var code = generateCode(i)
+    for(j=0;j<filesDir.length;j++){
+        var search = path.basename(filesDir[j],".html").replace(/[A-Z]/g,"")
+        if(ORDER[i] == search){
+            fs.rename(
+                `${dir}/${filesDir[j]}`,
+                `${dir}/${code}${search}.html`,
+                (err) => {}
+            )
         }
-        // console.log(`${code}${ORDER[i]}.html`)
     }
+    // console.log(`${code}${ORDER[i]}.html`)
 }
