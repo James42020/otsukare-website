@@ -22,6 +22,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/index.css">
     <script src="/js/index.js"></script>
+    <script src="/js/qrcode.min.js"></script>
     <% if (isJStrue) { %>
         <script src="/js/<%= file %>.js"></script>
     <% } %>
@@ -132,7 +133,6 @@
                     <h3 style="margin-block-start: 10px;">QR Code</h3>
                 </div>
                 <div class="modal-body">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
                     <p style="text-align: center;">Want to view this page on another device... Use this QR Code</p>
                     <div id="qrcode"></div>
                     <small style="color: #808080;">Note: Favourites will not be transfered across devices</small>

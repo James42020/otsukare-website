@@ -2,7 +2,7 @@
 
 // The version of the cache.
 // change whenever APP_STATIC_RESOURCES is changed
-const VERSION = "1";
+const VERSION = "10";
 
 // The name of the cache
 const CACHE_NAME = `otsukare-${VERSION}`;
@@ -11,24 +11,25 @@ const CACHE_NAME = `otsukare-${VERSION}`;
 var APP_STATIC_RESOURCES = [
     "/",
 
-    "/html/404.html",
+    "./html/404/404.html",
 
-    "/html/AAAkana.html",
-    "/html/AABkanji.html",
-    "/html/AACparticles.html",
-    "/html/AADconjugations.html",
-    "/html/AAEnumbers & counters.html",
-    "/html/AAFplaces.html",
-    "/html/AAGtime.html",
-    "/html/AAHpeople.html",
-    "/html/AAIthis & that.html",
-    "/html/AAJquestions.html",
+    "./html/content/AAAkana.html",
+    "./html/content/AABkanji.html",
+    "./html/content/AACparticles.html",
+    "./html/content/AADconjugations.html",
+    "./html/content/AAEnumbers & counters.html",
+    "./html/content/AAFplaces.html",
+    "./html/content/AAGtime.html",
+    "./html/content/AAHpeople.html",
+    "./html/content/AAIthis & that.html",
+    "./html/content/AAJquestions.html",
 
-    "/html/home.html",
-    "/html/links.html",
+    "./html/main/home.html",
+    "./html/main/links.html",
 
     "/js/index.js",
     "/js/kana.js",
+    "/js/qrcode.min.js",
 
     "/css/index.css",
     "/css/kana.css",
@@ -42,7 +43,12 @@ var APP_STATIC_RESOURCES = [
     "/manifest/icon-512.png",
     "/manifest/icon.svg",
     "/manifest/manifest.json",
-    "/manifest/service.js"
+
+    "/css/bootstrap.min.css",
+    "/jquery.min.js",
+    "/js/bootstrap.min.js",
+    "/fonts/glyphicons-halflings-regular.ttf",
+    "/fonts/glyphicons-halflings-regular.woff2"
 ];
 
 // On install, cache the static resources
@@ -50,8 +56,15 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-      cache.addAll(APP_STATIC_RESOURCES);
-    })(),
+      const results = await Promise.allSettled(
+        APP_STATIC_RESOURCES.map((url) => cache.add(url))
+      );
+      results.forEach((result, i) => {
+        if (result.status === "rejected") {
+          console.error("Failed to cache:", APP_STATIC_RESOURCES[i], result.reason);
+        }
+      });
+    })()
   );
 });
 
@@ -78,7 +91,16 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   // As a single page app, direct app to always go to cached home page.
   if (event.request.mode === "navigate") {
-    event.respondWith(caches.match("./"));
+    event.respondWith(
+      (async () => {
+        try {
+          return await fetch(event.request);
+        } catch (err) {
+          const cached = await caches.match(event.request.url);
+          return cached || (await caches.match("/")) || new Response("Offline", { status: 503 });
+        }
+      })(),
+    );
     return;
   }
 
