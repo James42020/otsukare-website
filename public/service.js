@@ -2,7 +2,7 @@
 
 // The version of the cache.
 // change whenever APP_STATIC_RESOURCES is changed
-const VERSION = "11";
+const VERSION = "v12";
 
 // The name of the cache
 const CACHE_NAME = `otsukare-${VERSION}`;
