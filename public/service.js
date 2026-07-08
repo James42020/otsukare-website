@@ -2,7 +2,7 @@
 
 // The version of the cache.
 // change whenever APP_STATIC_RESOURCES is changed
-const VERSION = "10";
+const VERSION = "11";
 
 // The name of the cache
 const CACHE_NAME = `otsukare-${VERSION}`;
@@ -10,6 +10,17 @@ const CACHE_NAME = `otsukare-${VERSION}`;
 // The static resources that the app needs to function.
 var APP_STATIC_RESOURCES = [
     "/",
+    "/links",
+    "/search/kana",
+    "/search/kanji",
+    "/search/particles",
+    "/search/conjugations",
+    "/search/numbers%20%26%20counters",
+    "/search/places",
+    "/search/time",
+    "/search/people",
+    "/search/this%20%26%20that",
+    "/search/questions",
 
     "./html/404/404.html",
 
