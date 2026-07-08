@@ -17,10 +17,10 @@ app.use(express.static(path.join(__dirname, "node_modules/jquery/dist/")));
 
 setTimeout(function(){
 
-var content = fs.readdirSync("./public/html/content")
+var content = fs.readdirSync("./private/html/content")
 var searchItems = []
 content.forEach(function(item){
-    var lines = fs.readFileSync(`./public/html/content/${item}`)
+    var lines = fs.readFileSync(`./private/html/content/${item}`)
     .toString().replace(/<[^>]*>/g,"").replaceAll("\r","").split("\n")
     var title = lines[0]
     var description = lines[1]
@@ -39,7 +39,7 @@ app.get("/search/:page", (req, res) => {
                 isCSStrue: fs.existsSync(`./public/css/${current}.css`),
                 file: current,
                 search: searchItems,
-                content: fs.readFileSync(`./public/html/content/${content[i]}`, 'utf8'),
+                content: fs.readFileSync(`./private/html/content/${content[i]}`, 'utf8'),
                 favouritable: true
             }
             res.render('index', data)
@@ -51,7 +51,7 @@ app.get("/search/:page", (req, res) => {
             isCSStrue: false,
             file: "404",
             search: searchItems,
-            content: fs.readFileSync(`./public/html/404/404.html`, 'utf8'),
+            content: fs.readFileSync(`./private/html/404/404.html`, 'utf8'),
             favouritable: false
         }
         res.status(404).render('index', data);
@@ -59,7 +59,7 @@ app.get("/search/:page", (req, res) => {
     
 })
 
-var main = fs.readdirSync("./public/html/main")
+var main = fs.readdirSync("./private/html/main")
 main.forEach(function(item){
     var mainbase = path.basename(item,".html")
     app.get("/"+mainbase.replace("home",""), (req, res) => {
@@ -68,7 +68,7 @@ main.forEach(function(item){
             isCSStrue: fs.existsSync(`./public/css/${mainbase}.css`),
             file: mainbase,
             search: searchItems,
-            content: fs.readFileSync(`./public/html/main/${mainbase}.html`, 'utf8'),
+            content: fs.readFileSync(`./private/html/main/${mainbase}.html`, 'utf8'),
             favouritable: false
         }
         res.render('index', data)
@@ -81,7 +81,7 @@ app.all('*splat', (req, res) => {
         isCSStrue: false,
         file: "404",
         search: searchItems,
-        content: fs.readFileSync(`./public/html/404/404.html`, 'utf8'),
+        content: fs.readFileSync(`./private/html/404/404.html`, 'utf8'),
         favouritable: false
     }
     res.status(404).render('index', data)

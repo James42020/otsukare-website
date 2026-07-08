@@ -22,22 +22,6 @@ var APP_STATIC_RESOURCES = [
     "/search/this%20%26%20that",
     "/search/questions",
 
-    "./html/404/404.html",
-
-    "./html/content/AAAkana.html",
-    "./html/content/AABkanji.html",
-    "./html/content/AACparticles.html",
-    "./html/content/AADconjugations.html",
-    "./html/content/AAEnumbers & counters.html",
-    "./html/content/AAFplaces.html",
-    "./html/content/AAGtime.html",
-    "./html/content/AAHpeople.html",
-    "./html/content/AAIthis & that.html",
-    "./html/content/AAJquestions.html",
-
-    "./html/main/home.html",
-    "./html/main/links.html",
-
     "/js/index.js",
     "/js/kana.js",
     "/js/qrcode.min.js",
